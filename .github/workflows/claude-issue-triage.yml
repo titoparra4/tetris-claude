@@ -1,0 +1,67 @@
+name: Claude Issue Triage
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  triage:
+    # Evita solaparse con claude.yml (que ya atiende issues que mencionan @claude)
+    if: >
+      !contains(github.event.issue.body, '@claude') &&
+      !contains(github.event.issue.title, '@claude')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Issue Triage
+        id: claude-triage
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: '--allowed-tools "Bash(gh label:*),Bash(gh issue:*)"'
+          prompt: |
+            Estás triando el issue #${{ github.event.issue.number }} del repositorio ${{ github.repository }}.
+
+            Este es un juego de Tetris clásico en JavaScript vanilla (Canvas + HTML/CSS,
+            sin build ni dependencias). El código relevante está en game.js, index.html
+            y style.css. Consulta CLAUDE.md para entender la arquitectura si te ayuda a
+            diagnosticar el issue con más precisión.
+
+            Sigue estos pasos:
+
+            1. Lee el título y el cuerpo del issue #${{ github.event.issue.number }}
+               (`gh issue view ${{ github.event.issue.number }}`) y revisa el código
+               relevante del repo para entender el problema o la solicitud.
+
+            2. Ejecuta `gh label list` para ver los labels ya existentes en el repo.
+
+            3. Aplica los labels apropiados con
+               `gh issue edit ${{ github.event.issue.number }} --add-label "<label1>,<label2>"`.
+               Si ningún label existente encaja bien, crea uno nuevo y descriptivo con
+               `gh label create "<nombre>" --color <hex> --description "<descripción>"`
+               y luego aplícalo. No dupliques labels con significado solapado.
+
+            4. Publica UN ÚNICO comentario de diagnóstico con
+               `gh issue comment ${{ github.event.issue.number }} --body "..."` en español,
+               con este formato exacto:
+
+               ## 🔍 Diagnóstico automático
+               **Resumen:** (qué pide o reporta el issue, en una o dos frases)
+               **Causa probable:** (si es un bug, hipótesis de causa raíz basada en el código; si es una feature, qué falta hoy)
+               **Archivos afectados:** (rutas concretas, p. ej. game.js, index.html)
+               **Enfoque propuesto:** (pasos concretos de alto nivel para implementar la solución, referenciando funciones/variables reales del código cuando aplique)
+
+            Reglas importantes:
+            - No edites el título ni el cuerpo del issue.
+            - No publiques más de un comentario de diagnóstico (si ya existe uno tuyo
+              anterior en este issue, actualiza tu análisis en un nuevo comentario solo
+              si el issue fue editado de forma sustancial; si no, no comentes de nuevo).
+            - No uses `@claude` en tus comentarios ni labels para evitar disparar otros workflows.
