@@ -257,3 +257,28 @@ kbd {
 .theme-switch input:checked + .slider::before {
   transform: translateX(18px);
 }
+
+/* ---- Skin selector ---- */
+.skin-select {
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.skin-select:focus {
+  outline: 2px solid var(--panel-value);
+  outline-offset: 1px;
+}
+
+/* ---- Neon skin overrides (board stays pure black regardless of theme) ---- */
+body.skin-neon {
+  --board-bg: #000000;
+  --board-border: #003333;
+  --board-shadow: rgba(0, 255, 255, 0.25);
+  --grid-color: #032b2b;
+}
