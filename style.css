@@ -218,6 +218,71 @@ kbd {
   background: var(--btn-hover);
 }
 
+/* ---- Menú de pausa ---- */
+.pause-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--title-color);
+}
+
+.menu-btn {
+  width: 200px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.15s;
+}
+
+.menu-btn:hover {
+  background: var(--btn-hover);
+}
+
+.menu-btn.secondary {
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+}
+
+.menu-btn.secondary:hover {
+  background: var(--kbd-border);
+}
+
+.pause-controls ul {
+  align-items: flex-start;
+}
+
+.pause-controls.hidden {
+  display: none;
+}
+
+.start-level {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--controls-text);
+}
+
+.start-level select {
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 /* ---- Theme toggle switch ---- */
 .theme-switch {
   position: relative;
