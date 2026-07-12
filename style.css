@@ -137,6 +137,36 @@ body {
   border-radius: 4px;
 }
 
+/* ---- Selector de skin ---- */
+#skin-select {
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#skin-select:focus {
+  outline: none;
+  border-color: var(--panel-value);
+}
+
+/* Ajustes del tablero por skin */
+body.skin-neon {
+  --board-bg: #000000;
+  --grid-color: #0d0d14;
+  --board-border: #1a3a4a;
+}
+
+body.skin-pastel {
+  --board-bg: #faf7fc;
+  --grid-color: #ece5f2;
+  --board-border: #d8cde2;
+}
+
 /* ---- Controles ---- */
 .controls ul {
   list-style: none;
