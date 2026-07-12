@@ -313,6 +313,132 @@ kbd {
   cursor: pointer;
 }
 
+/* ---- Récords ---- */
+.record-form,
+.records-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.record-form.hidden,
+.records-box.hidden {
+  display: none;
+}
+
+.record-msg {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--overlay-title);
+}
+
+.record-form-row {
+  display: flex;
+  gap: 6px;
+}
+
+#player-name {
+  width: 140px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--text);
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 6px;
+  outline: none;
+}
+
+#player-name:focus {
+  border-color: var(--btn-bg);
+}
+
+#save-record-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#save-record-btn:hover {
+  background: var(--btn-hover);
+}
+
+.records-title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--panel-label);
+}
+
+#records-list {
+  list-style: none;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+}
+
+#records-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: var(--text);
+}
+
+#records-list .record-score {
+  color: var(--overlay-score);
+  font-weight: 700;
+}
+
+#records-list .record-empty {
+  justify-content: center;
+  color: var(--controls-text);
+  font-size: 12px;
+}
+
+#records-list .record-highlight {
+  background: var(--btn-bg);
+}
+
+#records-list .record-highlight,
+#records-list .record-highlight .record-score {
+  color: var(--btn-text);
+  font-weight: 700;
+}
+
+#records-stats {
+  font-size: 11px;
+  color: var(--controls-text);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#reset-records-btn {
+  background: none;
+  border: 1px solid var(--kbd-border);
+  color: var(--controls-text);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+#reset-records-btn:hover {
+  border-color: var(--overlay-title);
+  color: var(--overlay-title);
+}
+
 /* ---- Theme toggle switch ---- */
 .theme-switch {
   position: relative;
