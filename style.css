@@ -137,6 +137,36 @@ body {
   border-radius: 4px;
 }
 
+/* ---- Selector de skin ---- */
+#skin-select {
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#skin-select:focus {
+  outline: none;
+  border-color: var(--panel-value);
+}
+
+/* Ajustes del tablero por skin */
+body.skin-neon {
+  --board-bg: #000000;
+  --grid-color: #0d0d14;
+  --board-border: #1a3a4a;
+}
+
+body.skin-pastel {
+  --board-bg: #faf7fc;
+  --grid-color: #ece5f2;
+  --board-border: #d8cde2;
+}
+
 /* ---- Controles ---- */
 .controls ul {
   list-style: none;
@@ -216,6 +246,197 @@ kbd {
 
 #restart-btn:hover {
   background: var(--btn-hover);
+}
+
+/* ---- Menú de pausa ---- */
+.pause-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--title-color);
+}
+
+.menu-btn {
+  width: 200px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.15s;
+}
+
+.menu-btn:hover {
+  background: var(--btn-hover);
+}
+
+.menu-btn.secondary {
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+}
+
+.menu-btn.secondary:hover {
+  background: var(--kbd-border);
+}
+
+.pause-controls ul {
+  align-items: flex-start;
+}
+
+.pause-controls.hidden {
+  display: none;
+}
+
+.start-level {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--controls-text);
+}
+
+.start-level select {
+  background: var(--kbd-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ---- Récords ---- */
+.record-form,
+.records-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.record-form.hidden,
+.records-box.hidden {
+  display: none;
+}
+
+.record-msg {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--overlay-title);
+}
+
+.record-form-row {
+  display: flex;
+  gap: 6px;
+}
+
+#player-name {
+  width: 140px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--text);
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 6px;
+  outline: none;
+}
+
+#player-name:focus {
+  border-color: var(--btn-bg);
+}
+
+#save-record-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#save-record-btn:hover {
+  background: var(--btn-hover);
+}
+
+.records-title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--panel-label);
+}
+
+#records-list {
+  list-style: none;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+}
+
+#records-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: var(--text);
+}
+
+#records-list .record-score {
+  color: var(--overlay-score);
+  font-weight: 700;
+}
+
+#records-list .record-empty {
+  justify-content: center;
+  color: var(--controls-text);
+  font-size: 12px;
+}
+
+#records-list .record-highlight {
+  background: var(--btn-bg);
+}
+
+#records-list .record-highlight,
+#records-list .record-highlight .record-score {
+  color: var(--btn-text);
+  font-weight: 700;
+}
+
+#records-stats {
+  font-size: 11px;
+  color: var(--controls-text);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#reset-records-btn {
+  background: none;
+  border: 1px solid var(--kbd-border);
+  color: var(--controls-text);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+#reset-records-btn:hover {
+  border-color: var(--overlay-title);
+  color: var(--overlay-title);
 }
 
 /* ---- Theme toggle switch ---- */
